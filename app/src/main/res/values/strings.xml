@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">GitHub Explorer</string>
+
+    <string name="search_hint">Search repositories…</string>
+    <string name="search_empty_query">Search for GitHub repositories</string>
+    <string name="search_no_results">No repositories found</string>
+    <string name="error_generic">Something went wrong</string>
+    <string name="error_no_internet">No internet connection</string>
+    <string name="retry">Retry</string>
+    <string name="stars">Stars</string>
+    <string name="forks">Forks</string>
+    <string name="open_issues">Open Issues</string>
+    <string name="default_branch">Default Branch</string>
+    <string name="last_updated">Last Updated</string>
+    <string name="owner">Owner</string>
+    <string name="favorites">Favorites</string>
+    <string name="favorites_empty">No favorites yet — tap the heart on any repository to save it here</string>
+    <string name="recent_searches">Recent Searches</string>
+    <string name="clear_history">Clear</string>
+    <string name="sort_by">Sort by</string>
+    <string name="filter_by_language">Filter by language</string>
+    <string name="all_languages">All languages</string>
+    <string name="content_desc_avatar">Owner avatar</string>
+    <string name="content_desc_favorite">Toggle favorite</string>
+    <string name="content_desc_back">Navigate back</string>
+    <string name="offline_cached_results">Showing cached results — you\'re offline</string>
+</resources>
