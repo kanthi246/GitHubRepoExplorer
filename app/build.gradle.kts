@@ -93,7 +93,10 @@ dependencies {
 
     // Unit tests
     testImplementation(libs.junit)
-    testImplementation(libs.kotlinx.coroutines.android)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockk)
+    testImplementation(libs.turbine)
+    testImplementation(libs.androidx.paging.testing)
 
     // Instrumented tests
     androidTestImplementation(libs.androidx.junit)

@@ -120,3 +120,24 @@ app/src/main/java/com/kanthi/githubrepoexplorer/
 ```
 
 Or open in Android Studio and run the `app` configuration.
+
+## Testing
+
+62 unit tests across every layer — no instrumentation/emulator required:
+
+```bash
+./gradlew testDebugUnitTest
+```
+
+| Layer | Covered by |
+|---|---|
+| `core/util` | `CountFormatterTest`, `DateFormatterTest` — pure formatting logic |
+| `data/mapper` | `RepositoryMappersTest` — DTO/Entity ↔ domain model conversions |
+| `data/paging` | `RepositorySearchPagingSourceTest` — first page, empty page, network failure, language qualifier, sort param, append pagination (via `androidx.paging:paging-testing`'s `TestPager`) |
+| `data/repository` | `GithubRepositoryImplTest` — favorite toggling, offline fallback to cache, search history |
+| `domain/usecase` | `UseCasesTest` — each use case forwards the right arguments to the repository |
+| `presentation` | `SearchViewModelTest`, `DetailsViewModelTest`, `FavoritesViewModelTest` — debounce timing, loading/success/error states, favorite state propagation |
+
+Tests use MockK for mocking, Turbine for `Flow` assertions, and `kotlinx-coroutines-test`
+(`StandardTestDispatcher` + a `MainDispatcherRule`) for deterministic coroutine/virtual-time
+control — including the search box's 500ms debounce, verified without any real delay.
