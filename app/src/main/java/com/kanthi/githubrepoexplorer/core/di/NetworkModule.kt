@@ -13,6 +13,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+/**
+ * Builds the networking stack used to talk to the GitHub REST API: OkHttp (the low-level HTTP
+ * client) -> Retrofit (turns HTTP calls into a type-safe Kotlin interface, see GithubApiService)
+ * -> the actual API service used by the repository layer.
+ *
+ * Everything here is a @Singleton so the whole app shares one connection pool instead of each
+ * feature creating its own client.
+ *
+ * Benefit: all networking configuration (timeouts, logging, base URL) lives in exactly one place,
+ * and any class that needs to make API calls just asks Hilt for a GithubApiService instead of
+ * knowing how to assemble one.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {

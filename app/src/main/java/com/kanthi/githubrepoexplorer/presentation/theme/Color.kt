@@ -2,6 +2,14 @@ package com.kanthi.githubrepoexplorer.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
+/**
+ * presentation/theme defines the app's visual identity: raw color values (this file), how they
+ * combine into light/dark color schemes (Theme.kt), and text styles (Type.kt) — deliberately
+ * modeled after GitHub's own light/dark palettes.
+ *
+ * Benefit: every screen pulls colors from `MaterialTheme.colorScheme` instead of hardcoding hex
+ * values, so the whole app's look (including dark mode) can be changed by editing these few files.
+ */
 val GithubBlue = Color(0xFF0969DA)
 val GithubBlueDark = Color(0xFF58A6FF)
 val GithubGreen = Color(0xFF1A7F37)

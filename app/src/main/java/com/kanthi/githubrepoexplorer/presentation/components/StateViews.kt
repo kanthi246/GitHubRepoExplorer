@@ -19,6 +19,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.kanthi.githubrepoexplorer.R
 
+/**
+ * Generic full-screen and inline UI states (loading spinner, error message with retry, empty
+ * state) reused across every screen that loads data — mirrors the Loading/Success/Error cases of
+ * UiState (see core/common/UiState.kt) as actual Composable views.
+ *
+ * Benefit: every screen shows loading/error/empty states with the same look and behavior, instead
+ * of each screen reinventing (and subtly mis-styling) its own spinner and error layout.
+ */
 @Composable
 fun FullScreenLoading(modifier: Modifier = Modifier) {
     Column(

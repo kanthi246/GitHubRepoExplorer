@@ -7,6 +7,7 @@ import com.kanthi.githubrepoexplorer.domain.repository.GithubRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
+/** Use case: run a paginated GitHub repository search with a sort order and optional language filter. Returns a Flow of PagingData (see data/paging/RepositorySearchPagingSource.kt). Used by SearchViewModel. See GetFavoriteRepositoriesUseCase for the general use-case pattern. */
 class SearchRepositoriesUseCase @Inject constructor(
     private val repository: GithubRepository,
 ) {

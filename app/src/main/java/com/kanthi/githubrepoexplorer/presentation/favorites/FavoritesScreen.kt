@@ -22,6 +22,7 @@ import com.kanthi.githubrepoexplorer.domain.model.Repository
 import com.kanthi.githubrepoexplorer.presentation.components.EmptyState
 import com.kanthi.githubrepoexplorer.presentation.components.RepositoryListItem
 
+/** The Favorites screen: lists all repositories the user has starred within the app, backed by the local Room database (works fully offline). See DetailsScreen for how screen + ViewModel pairs work in general. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FavoritesScreen(

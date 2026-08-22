@@ -20,6 +20,19 @@ import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
+/**
+ * The concrete implementation of the domain-layer GithubRepository interface — this is the
+ * "single source of truth" that decides where data actually comes from: the network (via
+ * GithubApiService) or the local cache (via Room DAOs), and how they combine (e.g.
+ * getRepositoryDetails tries the network first and falls back to the cached copy if offline).
+ *
+ * The domain and presentation layers never talk to Retrofit or Room directly — they only know
+ * about the GithubRepository interface (see domain/repository/GithubRepository.kt). Hilt wires
+ * this class in as the real implementation via core/di/RepositoryModule.kt.
+ *
+ * Benefit: all "where does this data come from and what happens if the network fails" logic is
+ * centralized here, instead of being duplicated across every screen that needs repository data.
+ */
 class GithubRepositoryImpl @Inject constructor(
     private val api: GithubApiService,
     private val repositoryDao: RepositoryDao,

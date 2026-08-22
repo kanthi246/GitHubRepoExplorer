@@ -28,6 +28,16 @@ import com.kanthi.githubrepoexplorer.R
 import com.kanthi.githubrepoexplorer.core.util.CountFormatter
 import com.kanthi.githubrepoexplorer.domain.model.Repository
 
+/**
+ * presentation/components holds small, reusable Composable "widgets" shared by multiple screens
+ * (as opposed to presentation/search, /details, /favorites, which each hold one full screen).
+ *
+ * RepositoryListItem renders one row in a repository list: avatar, name, description, language,
+ * star count, favorite toggle. Used identically by both SearchScreen and FavoritesScreen.
+ *
+ * Benefit: the row's look is defined once — a design tweak here (e.g. changing avatar size)
+ * automatically applies everywhere the row is used, with no risk of the two screens drifting apart.
+ */
 @Composable
 fun RepositoryListItem(
     repository: Repository,

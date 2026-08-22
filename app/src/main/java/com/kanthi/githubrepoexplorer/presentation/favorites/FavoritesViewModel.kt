@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/** ViewModel for FavoritesScreen. `stateIn` turns the repository's cold Flow into a StateFlow the UI can collect, with `SharingStarted.WhileSubscribed(5_000)` keeping it active for 5s after the screen goes off-screen (e.g. during rotation) so it doesn't needlessly restart. See DetailsViewModel for more on the ViewModel pattern. */
 @HiltViewModel
 class FavoritesViewModel @Inject constructor(
     getFavoriteRepositoriesUseCase: GetFavoriteRepositoriesUseCase,

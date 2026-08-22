@@ -11,6 +11,15 @@ import java.io.IOException
 
 private const val STARTING_PAGE = 1
 
+/**
+ * Feeds Jetpack Paging3 one page of GitHub search results at a time as the user scrolls, instead
+ * of fetching thousands of results up front. Paging3 calls `load()` automatically when the user
+ * nears the end of the currently loaded list.
+ *
+ * Benefit: search results load instantly (only ~20 items fetched at a time), memory use stays
+ * bounded no matter how many results GitHub has, and the UI layer (SearchScreen) gets built-in
+ * loading/error states for free via LazyPagingItems.
+ */
 class RepositorySearchPagingSource(
     private val api: GithubApiService,
     private val query: String,

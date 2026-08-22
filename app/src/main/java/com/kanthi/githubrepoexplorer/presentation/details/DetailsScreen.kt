@@ -40,6 +40,18 @@ import com.kanthi.githubrepoexplorer.domain.model.Repository
 import com.kanthi.githubrepoexplorer.presentation.components.FullScreenError
 import com.kanthi.githubrepoexplorer.presentation.components.FullScreenLoading
 
+/**
+ * The Details screen: shown when the user taps a repository, displaying its full stats (stars,
+ * forks, issues, branch, last updated) and a favorite toggle.
+ *
+ * This is a "screen" Composable — it owns a ViewModel (via `hiltViewModel()`) and reads its
+ * exposed StateFlow with `collectAsStateWithLifecycle()`, which automatically pauses collection
+ * when the screen isn't visible (e.g. app backgrounded) to avoid wasted work.
+ *
+ * Benefit: this function only describes *what the UI should look like for the current state* —
+ * all the logic for fetching data and reacting to button taps lives in DetailsViewModel, keeping
+ * the UI code focused purely on layout and the ViewModel independently testable.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailsScreen(

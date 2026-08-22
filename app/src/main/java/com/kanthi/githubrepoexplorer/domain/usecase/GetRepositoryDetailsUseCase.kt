@@ -5,6 +5,7 @@ import com.kanthi.githubrepoexplorer.domain.model.Repository
 import com.kanthi.githubrepoexplorer.domain.repository.GithubRepository
 import javax.inject.Inject
 
+/** Use case: fetch full details for a single repository (network-first, cache fallback — see GithubRepositoryImpl). Used by DetailsViewModel. See GetFavoriteRepositoriesUseCase for the general use-case pattern. */
 class GetRepositoryDetailsUseCase @Inject constructor(
     private val repository: GithubRepository,
 ) {

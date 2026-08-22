@@ -2,6 +2,17 @@ package com.kanthi.githubrepoexplorer.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * DTOs ("Data Transfer Objects") mirror the exact JSON shape GitHub's API returns — field names
+ * like `stargazers_count` stay snake_case via @SerializedName because that's what the API sends,
+ * even though the rest of the Kotlin codebase uses camelCase.
+ *
+ * These are intentionally *not* used outside the data layer — see data/mapper/RepositoryMappers.kt,
+ * which converts them into the app's own `Repository` domain model.
+ *
+ * Benefit: if GitHub's API response format changes, only these DTOs (and their mapper) need to
+ * change — the rest of the app is insulated from it.
+ */
 data class SearchRepositoriesResponseDto(
     @SerializedName("total_count") val totalCount: Int,
     @SerializedName("items") val items: List<RepositoryDto>,

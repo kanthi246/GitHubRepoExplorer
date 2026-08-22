@@ -3,7 +3,13 @@ package com.kanthi.githubrepoexplorer.core.util
 import java.util.Locale
 import kotlin.math.abs
 
-/** Renders large counts compactly, GitHub-style: 12,500 -> "12.5k". */
+/**
+ * core/util holds small, stateless helper functions used by the presentation layer that don't
+ * belong to any single screen. Renders large counts compactly, GitHub-style: 12,500 -> "12.5k".
+ *
+ * Benefit: formatting logic (and its edge cases) lives and is tested in one place instead of
+ * being copy-pasted into every Composable that shows a star/fork count.
+ */
 object CountFormatter {
 
     fun format(count: Int): String {

@@ -6,6 +6,7 @@ import androidx.room.Upsert
 import com.kanthi.githubrepoexplorer.data.local.entity.SearchHistoryEntity
 import kotlinx.coroutines.flow.Flow
 
+/** Room DAO for the "search_history" table — stores the user's recent search queries. See RepositoryDao for how DAOs work in general. */
 @Dao
 interface SearchHistoryDao {
 

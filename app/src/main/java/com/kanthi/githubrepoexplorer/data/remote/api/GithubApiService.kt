@@ -6,6 +6,15 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
+/**
+ * A Retrofit interface describing GitHub's REST API as plain Kotlin functions. You declare the
+ * HTTP method and path with annotations (@GET, @Query, @Path); Retrofit generates the networking
+ * code that turns a call like `searchRepositories(...)` into a real HTTP request and parses the
+ * JSON response into the Dto classes.
+ *
+ * Benefit: calling the network looks exactly like calling a local function — no manual URL
+ * building, request construction, or JSON parsing scattered through the codebase.
+ */
 interface GithubApiService {
 
     @GET("search/repositories")

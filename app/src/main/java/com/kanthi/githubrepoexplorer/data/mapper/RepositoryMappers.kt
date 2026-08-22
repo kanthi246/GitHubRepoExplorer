@@ -4,6 +4,15 @@ import com.kanthi.githubrepoexplorer.data.local.entity.RepositoryEntity
 import com.kanthi.githubrepoexplorer.data.remote.dto.RepositoryDto
 import com.kanthi.githubrepoexplorer.domain.model.Repository
 
+/**
+ * Converts between the three different shapes the "same" repository data takes as it moves
+ * through the app: RepositoryDto (raw JSON shape from the GitHub API), RepositoryEntity (the
+ * database row shape), and Repository (the clean domain model everything else in the app uses).
+ *
+ * Benefit: the domain and presentation layers only ever see the stable `Repository` model and
+ * never need to know about JSON field names or database column types — if GitHub changes its API
+ * response shape, only this file (and RepositoryDto) needs updating.
+ */
 fun RepositoryDto.toDomain(isFavorite: Boolean = false): Repository = Repository(
     id = id,
     name = name,

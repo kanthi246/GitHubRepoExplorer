@@ -12,6 +12,21 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+/**
+ * core/di holds Hilt "modules" — recipes that teach the dependency injection framework how to
+ * construct objects it doesn't know how to build automatically (mainly third-party classes like
+ * Room's database builder or Retrofit, which have no @Inject constructor of their own).
+ *
+ * This module builds the local Room database (the on-device SQLite database used for offline
+ * caching and favorites — see data/local) and exposes its DAOs.
+ *
+ * @InstallIn(SingletonComponent::class) + @Singleton mean there is exactly one AppDatabase
+ * instance for the whole app lifetime.
+ *
+ * Benefit: any class (e.g. GithubRepositoryImpl) can simply declare `private val dao: RepositoryDao`
+ * in its constructor and Hilt hands it the shared instance — no manual wiring, no leaked
+ * duplicate database connections.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {

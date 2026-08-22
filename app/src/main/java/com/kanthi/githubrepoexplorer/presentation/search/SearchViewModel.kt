@@ -33,6 +33,19 @@ import javax.inject.Inject
 
 private const val SEARCH_DEBOUNCE_MS = 500L
 
+/**
+ * ViewModel for SearchScreen — the most involved ViewModel in the app, since it combines several
+ * independent pieces of state: the typed query, sort option, language filter, search history, and
+ * the live favorite status of every visible repository.
+ *
+ * `.debounce(SEARCH_DEBOUNCE_MS)` waits 500ms after the user stops typing before actually
+ * searching, so the app isn't firing a network request on every keystroke. `combine(...)` merges
+ * multiple StateFlows into one so a change to *any* of them (query, sort, language) triggers a
+ * fresh search. See DetailsViewModel for more on the ViewModel pattern in general.
+ *
+ * Benefit: all this reactive wiring — debouncing, combining filters, overlaying favorite state —
+ * lives in one testable class, and SearchScreen just renders whatever state comes out of it.
+ */
 @OptIn(ExperimentalCoroutinesApi::class, FlowPreview::class)
 @HiltViewModel
 class SearchViewModel @Inject constructor(

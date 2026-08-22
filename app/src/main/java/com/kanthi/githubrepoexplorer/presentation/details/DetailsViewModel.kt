@@ -21,6 +21,20 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * The ViewModel for DetailsScreen — this is the "VM" in MVVM (Model-View-ViewModel). It holds
+ * the screen's state (`uiState`, `isFavorite`) as StateFlow and exposes functions the UI calls in
+ * response to user actions (`loadDetails`, `onToggleFavorite`). It talks only to use cases
+ * (domain layer), never directly to Retrofit or Room.
+ *
+ * `SavedStateHandle` reads the `owner`/`name` navigation arguments (see AppNavGraph.kt) so this
+ * ViewModel knows which repository to load. A ViewModel survives configuration changes (like
+ * screen rotation), so in-flight state isn't lost when the Activity briefly gets recreated.
+ *
+ * Benefit: DetailsScreen (the Composable) stays a "dumb" rendering function with no business
+ * logic, while all the loading/error/favorite-toggling logic lives here where it can be unit
+ * tested without needing to render any actual UI.
+ */
 @OptIn(ExperimentalCoroutinesApi::class)
 @HiltViewModel
 class DetailsViewModel @Inject constructor(

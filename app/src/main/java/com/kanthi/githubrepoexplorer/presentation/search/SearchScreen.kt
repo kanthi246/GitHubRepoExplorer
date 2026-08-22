@@ -61,6 +61,15 @@ import com.kanthi.githubrepoexplorer.presentation.components.PaginationErrorRow
 import com.kanthi.githubrepoexplorer.presentation.components.PaginationLoadingRow
 import com.kanthi.githubrepoexplorer.presentation.components.RepositoryListItem
 
+/**
+ * The Search screen — the app's home/start destination (see AppNavGraph.kt). Lets the user type a
+ * search query, filter by sort order and language, browse recent search history when the query is
+ * empty, and scroll through paginated results.
+ *
+ * Note this screen uses `LazyPagingItems`/`collectAsLazyPagingItems()` (from Paging3) instead of
+ * a plain list — see data/paging/RepositorySearchPagingSource.kt for why. See DetailsScreen for
+ * how screen + ViewModel pairs work in general.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchScreen(

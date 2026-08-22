@@ -10,6 +10,12 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
+/**
+ * Assembles the app's Material3 theme: picks a light or dark color scheme (or, on Android 12+
+ * with `dynamicColor`, one generated from the user's wallpaper) and wraps `content` in a
+ * MaterialTheme so every Composable inside can read `MaterialTheme.colorScheme`/`.typography`.
+ * Applied once, at the very top of the UI tree, in MainActivity.
+ */
 private val LightColors = lightColorScheme(
     primary = GithubBlue,
     secondary = GithubGreen,

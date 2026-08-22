@@ -5,6 +5,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
+/** The app's text styles (size/weight per role: titleLarge, bodyMedium, etc.), referenced throughout the UI as `MaterialTheme.typography.*` instead of hardcoding font sizes in each screen. */
 val Typography = Typography(
     titleLarge = TextStyle(fontWeight = FontWeight.Bold, fontSize = 22.sp),
     titleMedium = TextStyle(fontWeight = FontWeight.SemiBold, fontSize = 17.sp),
